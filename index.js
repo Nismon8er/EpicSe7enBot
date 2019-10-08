@@ -1,8 +1,9 @@
 const Discord = require('discord.js');
+require('dotenv').config();
 const bot = new Discord.Client();
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const axios = require('axios');
-const token = 'NjMwMjIxODc5NzA5NTMyMTkx.XZv8IA.M3oW-sRdr0y3EKivqOKyonIUAg4';
+const token = process.env.BOT_TOKEN;
 
 bot.on('ready', () =>{
 	console.log('This bot is online');
