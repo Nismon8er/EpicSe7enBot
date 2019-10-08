@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 require('dotenv').config();
 const bot = new Discord.Client();
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const axios = require('axios');
 const token = process.env.BOT_TOKEN;
 
