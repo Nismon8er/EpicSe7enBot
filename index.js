@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const axios = require('axios');
-const token = 'NjMwMjIxODc5NzA5NTMyMTkx.XZlKEQ.zZju9VDJfbrCYRMjbferf31y6tE';
+const token = 'NjMwMjIxODc5NzA5NTMyMTkx.XZv8IA.M3oW-sRdr0y3EKivqOKyonIUAg4';
 
 bot.on('ready', () =>{
 	console.log('This bot is online');
