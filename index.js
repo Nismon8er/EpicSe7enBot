@@ -2,7 +2,11 @@ const Discord = require('discord.js');
 require('dotenv').config();
 const bot = new Discord.Client();
 const axios = require('axios');
+<<<<<<< HEAD
 const token = process.env.TOKEN;
+=======
+const token = process.env.BOT_TOKEN;
+>>>>>>> f9e52384f5b79fb2396d0ccb73dcf3ae6210bab6
 
 bot.on('ready', () =>{
 	console.log('This bot is online');
@@ -29,6 +33,7 @@ bot.on('message', msg=>{
   .finally(function () {
     // always executed
   });
+<<<<<<< HEAD
   }
 
   if("artifact" === command){
@@ -51,6 +56,9 @@ bot.on('message', msg=>{
     // always executed
   });
   }
+=======
+	}
+>>>>>>> f9e52384f5b79fb2396d0ccb73dcf3ae6210bab6
 })
 
 function getAllStats(hero, element, data){
@@ -75,6 +83,7 @@ function getAllStats(hero, element, data){
       color = "RANDOM";
   }
   var embed = new Discord.RichEmbed()
+<<<<<<< HEAD
   .addField("Level 50 Full Star Awaken", "Stats")
   .addField("CP", data.lv50FiveStarFullyAwakened.cp, true)
   .addField("ATK", data.lv50FiveStarFullyAwakened.atk, true)
@@ -97,10 +106,36 @@ function getAllStats(hero, element, data){
   .addField("EFF", data.lv60SixStarFullyAwakened.eff, true)
   .addField("EFR", data.lv60SixStarFullyAwakened.efr, true)
   .addField("DAC", data.lv60SixStarFullyAwakened.dac, true)
+=======
+  .addField("Level 1 No Star Awaken", "Stats")
+  .addField("COMBAT POWER", data.lv1BaseStarNoAwaken.cp, true)
+  .addField("ATTACK", data.lv1BaseStarNoAwaken.atk, true)
+  .addField("HP", data.lv1BaseStarNoAwaken.hp, true)
+  .addField("SPEED", data.lv1BaseStarNoAwaken.spd, true)
+  .addField("DEFENSE", data.lv1BaseStarNoAwaken.def, true)
+  .addField("CRIT CHANCE", data.lv1BaseStarNoAwaken.chc, true)
+  .addField("CRIT DAMAGE", data.lv1BaseStarNoAwaken.chd, true)
+  .addField("EFFECTIVENESS", data.lv1BaseStarNoAwaken.eff, true)
+  .addField("EFFECT RESISTANCE", data.lv1BaseStarNoAwaken.efr, true)
+  .addField("DUAL ATTACK CHANCE", data.lv1BaseStarNoAwaken.dac, true)
+  .addBlankField()
+  .addField("Level 60 Full Star Awaken", "Stats")
+  .addField("CP", data.lv60SixStarFullyAwakened.cp, true)
+  .addField("ATTACK", data.lv60SixStarFullyAwakened.atk, true)
+  .addField("HP", data.lv60SixStarFullyAwakened.hp, true)
+  .addField("SPEED", data.lv60SixStarFullyAwakened.spd, true)
+  .addField("DEFENSE", data.lv60SixStarFullyAwakened.def, true)
+  .addField("CRIT CHANCE", data.lv60SixStarFullyAwakened.chc, true)
+  .addField("CRIT DAMAGE", data.lv60SixStarFullyAwakened.chd, true)
+  .addField("EFFECTIVENESS", data.lv60SixStarFullyAwakened.eff, true)
+  .addField("EFFECT RESISTANCE", data.lv60SixStarFullyAwakened.efr, true)
+  .addField("DUAL ATTACK CHANCE", data.lv60SixStarFullyAwakened.dac, true)
+>>>>>>> f9e52384f5b79fb2396d0ccb73dcf3ae6210bab6
   .setColor(color)
   .attachFile('https://assets.epicsevendb.com/hero/' + hero + '/full.png');
   return embed;
 }
+<<<<<<< HEAD
 
 
 function getArtifactStats(artifact, exclusive, data, base, max){
@@ -139,5 +174,7 @@ function getArtifactStats(artifact, exclusive, data, base, max){
   .attachFile('https://assets.epicsevendb.com/artifact/' + artifact + '/full.png');
   return embed;
 }
+=======
+>>>>>>> f9e52384f5b79fb2396d0ccb73dcf3ae6210bab6
 
 bot.login(token);
