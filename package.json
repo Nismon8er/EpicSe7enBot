@@ -13,10 +13,7 @@
     "discord.io": "^2.5.3",
     "discord.js": "^11.5.1",
     "dotenv": "^8.1.0",
-<<<<<<< HEAD
     "winston": "^3.2.1",
-=======
->>>>>>> f9e52384f5b79fb2396d0ccb73dcf3ae6210bab6
     "xmlhttprequest": "^1.8.0"
   }
 }
