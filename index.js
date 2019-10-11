@@ -3,6 +3,8 @@ require('dotenv').config();
 const bot = new Discord.Client();
 const axios = require('axios');
 const token = process.env.BOT_TOKEN;
+const campingSim = require('./commands/campingSim');
+const signs = require('./commands/signs');
 
 bot.on('ready', () =>{
 	console.log('This bot is online');
@@ -34,7 +36,14 @@ bot.on('message', msg=>{
   .finally(function () {
     // always executed
   });
-	}
+  }
+  
+  if("signs" === command) {
+    signs(name, msg);
+  }
+  if("camp" === command) {
+    campingSim(msg);
+  }
 })
 
 function getAllStats(hero, element, data){
