@@ -14,27 +14,29 @@ bot.on('message', msg=>{
     var name = fullCommand[1];
     var attribute = fullCommand[2] ? fullCommand[2] : '';
 	if("hero" === command){
-		axios.get('https://api.epicsevendb.com/api/hero/' + name)
-  .then(function (response) {
-    var fullData = response.data.results[0];
-    var element = fullData.element;
-    // handle success
-    if("" === attribute){
-      var fullStats = fullData.stats;
-      msg.channel.send(getAllStats(name, element, fullStats));
-    }else if("skill-materials" === attribute){
-      var fullSkills = fullData.skills;
-      msg.channel.send(getAllMaterials(name,element,fullSkills));
-    }
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .finally(function () {
-    // always executed
-  });
-	}
+	  axios.get('https://api.epicsevendb.com/api/hero/' + name)
+      .then(function (response) {
+        var fullData = response.data.results[0];
+        var element = fullData.element;
+        // handle success
+          if("" === attribute){
+            var fullStats = fullData.stats;
+            msg.channel.send(getAllStats(name, element, fullStats));
+          }else if("skill-materials" === attribute){
+            var fullSkills = fullData.skills;
+            msg.channel.send(getAllMaterials(name,element,fullSkills));
+          }
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+	}else if("help" === command){
+    msg.channel.send(getHelpCommandsList());
+  }
 })
 
 function getAllStats(hero, element, data){
@@ -98,27 +100,20 @@ function getAllMaterials(hero, element, data){
 }
 
 function getColorByElement(element){
-  var color = "RANDOM";
   switch (element){
     case "fire":
-      color = "RED";
-      break;
+      return color = "RED";
     case "ice":
-      color = "BLUE";
-      break;
+      return color = "BLUE";
     case "earth":
-      color = "GREEN";
-      break;
+      return color = "GREEN";
     case "light":
-      color = "GOLD";
-      break;
+      return color = "GOLD";
     case "dark":
-      color = "PURPLE";
-      break;
+      return color = "PURPLE";
     default:
-      color = "RANDOM";
+      return color = "RANDOM";
   }
-  return color;
 }
 
 function toTitleCase(word) {
@@ -128,5 +123,16 @@ function toTitleCase(word) {
 	}
 	return word.join('-');
 };
+
+function getHelpCommandsList(){
+  var embed = new Discord.RichEmbed()
+  .setTitle("List of possible commands")
+  .setColor("RANDOM")
+  .addField("Command Prefix", "?")
+  .addField("Possible Command Type", "hero, artifact, item")
+  .addField("Hero Commands", "skill-materials")
+  .addField("Example", "?hero ken skill-materials");
+  return embed;  
+}
 
 bot.login(token);
