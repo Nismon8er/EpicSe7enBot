@@ -4,6 +4,7 @@ const bot = new Discord.Client();
 const axios = require('axios');
 const token = process.env.BOT_TOKEN;
 const campingSim = require('./commands/campingSim');
+const signs = require('./commands/signs');
 
 bot.on('ready', () =>{
 	console.log('This bot is online');
@@ -33,7 +34,7 @@ bot.on('message', msg=>{
   }
   
   if("signs" === command) {
-    getSigns(name, msg);
+    signs(name, msg);
   }
   if("camp" === command) {
     campingSim(msg);
@@ -89,89 +90,6 @@ function getAllStats(hero, element, data){
   .setColor(color)
   .attachFile('https://assets.epicsevendb.com/hero/' + hero + '/full.png');
   return embed;
-}
-
-function getSigns(sign, msg) {
-  let hero = "";
-  switch (sign) {
-    case "aries":
-      hero = "cecilia";
-      break;
-    case "taurus":
-      hero = "zeno";
-      break;
-    case "gemini":
-      hero = "lots";
-      break;
-    case "cancer":
-      hero = "doris";
-      break;
-    case "leo":
-      hero = "kise";
-      break;
-    case "virgo":
-      hero = "rin";
-      break;
-    case "libra":
-      hero = "rose";
-      break;
-    case "scorpio":
-      hero = "coli";
-      break;
-    case "sagittarius":
-      hero = "chloe";
-      break;
-    case "capicorn":
-      hero = "ken";
-      break;
-    case "aquarius":
-      hero = "basar";
-      break;
-    case "pisces":
-      hero = "elson";
-      break;
-    default:
-      hero = "";
-  }
-
-  if(hero === "") {
-    msg.channel.send("The zodiac sign was either incorrect or was not inputted. Please try again.");
-  }
-  else {
-    axios.get('https://api.epicsevendb.com/api/hero/' + hero)
-    .then(function (response) {
-      var results = response.data.results[0].awakening;
-  
-      var embed = new Discord.RichEmbed().setTitle("Zodiac Sign: " + sign);
-      let stars = "";
-  
-      results.forEach((element, i) => {
-        let key = Object.keys(element.statsIncrease[0]);
-        let stat = " " + ((key != "spd") ? element.statsIncrease[0][key] * 100 + "%" : element.statsIncrease[0][key]);
-        stars += String.fromCharCode(9733);
-  
-        if(i === 2) {
-          key = ""
-          stat = "Skill Upgrade";
-        }
-        if(i === 3) {
-          embed.addBlankField();
-        }
-  
-        embed.addField(stars, key.toString().toUpperCase() + stat, true);
-      });
-  
-      msg.channel.send(embed);
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-      msg.channel.send("There was an error trying to execute that command!");
-    })
-    .finally(function () {
-      // always executed
-    });
-  }
 }
 
 bot.login(token);

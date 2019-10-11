@@ -4,20 +4,25 @@ function getCampingSim(msg) {
     var charCampingList = [];
     var characters = msg.content.split(' ').slice(-4);
 
-    characters.forEach(element => {
-        axios.get('https://api.epicsevendb.com/api/hero/' + element)
-            .then(function (response) {
-                charCampingList[element] = response.data.results[0].camping;
-        })
-        .catch(function(error) {
-            console.log(error)
-        })
-        .finally(function() {
-            charCampingList.forEach((element, name) => {
-                console.log(name);
+    
+    const char1 = axios.get('https://api.epicsevendb.com/api/hero/' + characters[0]);
+    const char2 = axios.get('https://api.epicsevendb.com/api/hero/' + characters[1]);
+    const char3 = axios.get('https://api.epicsevendb.com/api/hero/' + characters[2]);
+    const char4 = axios.get('https://api.epicsevendb.com/api/hero/' + characters[3]);
+
+    Promise.all([char1, char2, char3, char4])
+        .then(function(values) {
+            values.forEach((element, i) => {
+                charCampingList[characters[i]] = element.data.results[0].camping;
             });
+
+            characters.forEach((element, i) => {
+                charCampingList[element].options.forEach((element, j) => {
+                    
+                })
+            });
+            console.log(charCampingList);
         });
-    });
 }
 
 module.exports = getCampingSim;
