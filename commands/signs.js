@@ -6,7 +6,7 @@ function getSigns(sign, msg) {
     let hero = "";
     let image = "";
     let color = "";
-    switch (sign) {
+    switch (sign.toLowerCase()) {
       case "aries":
         hero = "cecilia";
         image = "1_aries.png";
