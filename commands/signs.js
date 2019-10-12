@@ -5,58 +5,72 @@ const axios = require('axios');
 function getSigns(sign, msg) {
     let hero = "";
     let image = "";
+    let color = "";
     switch (sign) {
       case "aries":
         hero = "cecilia";
         image = "1_aries.png";
+        color = "#FF0000";
         break;
       case "taurus":
         hero = "zeno";
         image = "2_taurus.png";
+        color = "#008000";
         break;
       case "gemini":
         hero = "lots";
         image = "3_gemini.png";
+        color = "#FFFF00";
         break;
       case "cancer":
         hero = "doris";
         image = "4_cancer.png";
+        color = "#C0C0C0";
         break;
       case "leo":
         hero = "kise";
         image = "5_leo.png";
+        color = "#FFD700";
         break;
       case "virgo":
         hero = "rin";
         image = "6_virgo.png";
+        color = "#556B2F";
         break;
       case "libra":
         hero = "rose";
         image = "7_libra.png";
+        color = "#cc66ff";
         break;
       case "scorpio":
         hero = "coli";
         image = "8_scorpio.png";
+        color = "#000000";
         break;
       case "sagittarius":
         hero = "chloe";
         image = "9_sagittarius.png";
+        color = "#6600cc";
         break;
       case "capicorn":
         hero = "ken";
         image = "10_capicorn.png";
+        color = "#663300";
         break;
       case "aquarius":
         hero = "basar";
         image = "11_aquarius.png";
+        color = "#0000ff";
         break;
       case "pisces":
         hero = "elson";
         image = "12_pisces.png";
+        color = "#00ff00";
         break;
       default:
         hero = "";
         image = "";
+        color = "";
     }
   
     if(hero === "") {
@@ -67,7 +81,7 @@ function getSigns(sign, msg) {
       .then(function (response) {
         let results = response.data.results[0].awakening;
     
-        let embed = new Discord.RichEmbed().setTitle("Zodiac Sign: " + sign).setThumbnail("https://assets.epicsevendb.com/zodiac-sign/" + image);
+        let embed = new Discord.RichEmbed().setTitle("Zodiac Sign: " + sign).setColor(color).setThumbnail("https://assets.epicsevendb.com/zodiac-sign/" + image);
         let stars = "";
     
         results.forEach((element, i) => {
