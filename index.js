@@ -58,7 +58,7 @@ bot.on('message', msg=>{
   }
 
   if("signs" === command) {
-    getSigns(name, msg);
+    signs(name, msg);
   }
   if("camp" === command) {
     campingSim(msg);
