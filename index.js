@@ -37,7 +37,6 @@ bot.on('message', msg=>{
     // always executed
   });
   }
-<<<<<<< HEAD
 
   if("artifact" === command){
     axios.get('https://api.epicsevendb.com/api/artifact/' + name)
@@ -59,23 +58,15 @@ bot.on('message', msg=>{
 
   if("signs" === command) {
     getSigns(name, msg);
-=======
-  
-  if("signs" === command) {
-    signs(name, msg);
->>>>>>> 0de5e26ae706bac9db4cf3d1b8a77ed8d6d94721
   }
   if("camp" === command) {
     campingSim(msg);
   }
-<<<<<<< HEAD
 
   if("summonNormal" === command){
     getNormalSummon(name, msg);
   }
 
-=======
->>>>>>> 0de5e26ae706bac9db4cf3d1b8a77ed8d6d94721
 })
 
 function getAllStats(hero, element, data){
@@ -108,8 +99,6 @@ function getAllStats(hero, element, data){
   .setThumbnail('https://assets.epicsevendb.com/hero/' + hero + '/icon.png');
   return embed;
 }
-
-<<<<<<< HEAD
 
 function getArtifactStats(artifact, exclusive, base, max){
   switch (exclusive){
@@ -423,7 +412,7 @@ function getSigns(sign, msg) {
   });
   //console.log(axios.response);
 }
-=======
+
 function getAllMaterials(hero, element, data){
   var allMaterialsArray = new Object();
   for(var i = 0; i < 3; i++){
@@ -484,6 +473,5 @@ function toTitleCase(word) {
 	}
 	return word.join('-');
 };
->>>>>>> 0de5e26ae706bac9db4cf3d1b8a77ed8d6d94721
 
 bot.login(token);
